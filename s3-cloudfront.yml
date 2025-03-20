@@ -1,0 +1,18 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "CloudFormation template for creating an S3 bucket and CloudFront distribution"
+Parameters:
+  BucketNameParam:
+    Type: String
+    Description: "bud-crc"
+Resources:
+  MyS3Bucket:  # Logical ID for the S3 bucket
+  Type: AWS::S3::Bucket
+  Properties:
+    BucketName: !Ref BucketNameParam
+    PublicAccessBlockConfiguration:  # Recommended security best practice
+      BlockPublicAcls: true
+      BlockPublicPolicy: true
+      IgnorePublicAcls: true
+      RestrictPublicBuckets: true
+
